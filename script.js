@@ -1,13 +1,14 @@
-const backendURL = "PASTE_YOUR_APPS_SCRIPT_URL_HERE";
+const backendURL = "https://script.google.com/macros/s/AKfycbwSon-dKx8RWIhIvxP328WDdOFirC4Lw6fL99LNF2-4XG5kLIrJdGBHp7nDZ3FmnAIb/exec";
 
-const loader = document.getElementById("loader");
+const entry = document.getElementById("entryScreen");
 const form = document.getElementById("lecturerForm");
 const success = document.getElementById("success");
 
+// Entry screen delay
 setTimeout(() => {
-  loader.style.display = "none";
+  entry.style.display = "none";
   form.style.display = "block";
-}, 2000);
+}, 2500);
 
 // Subject logic
 const subjectsByLevel = {
@@ -34,7 +35,7 @@ form.addEventListener("submit", async (e) => {
 
   const phone = document.getElementById("phone").value;
   if (!/^\d{10}$/.test(phone)) {
-    alert("Phone must be 10 digits");
+    alert("Phone number must be exactly 10 digits");
     return;
   }
 
