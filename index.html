@@ -2,84 +2,74 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Rutvi Consultants – Lecturer Registration</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- ENTRY SCREEN -->
-<div id="entryScreen" class="center">
-  <img src="logo.png" class="logo">
-  <h1>Rutvi Consultants</h1>
-  <p class="tagline">Transparent • Ethical • Academic Recruitment</p>
-</div>
+<div class="container">
 
-<!-- MAIN CONTAINER -->
-<div id="container" class="hidden">
-
-  <!-- STEP 1 -->
-  <div class="card step active" id="step1">
-    <h2>Select Level</h2>
-    <div class="card-grid">
-      <button class="select-btn" data-level="NEET">NEET</button>
-      <button class="select-btn" data-level="JEE">JEE</button>
-      <button class="select-btn" data-level="CET">CET</button>
-      <button class="select-btn" data-level="BOARDS">BOARDS</button>
-    </div>
+  <!-- HEADER -->
+  <div class="header">
+    <img src="logo.png" class="logo">
+    <h1>Rutvi Consultants</h1>
+    <p>Transparent • Ethical • Academic Recruitment</p>
   </div>
 
-  <!-- STEP 2 -->
-  <div class="card step" id="step2">
-    <h2>Select Subjects</h2>
-    <div id="subjects" class="pill-grid"></div>
-    <button class="next-btn">Continue</button>
+  <!-- LEVEL -->
+  <h3>Select Level *</h3>
+  <div class="level-group">
+    <button data-level="NEET">NEET</button>
+    <button data-level="JEE">JEE</button>
+    <button data-level="CET">CET</button>
+    <button data-level="BOARDS">BOARDS</button>
   </div>
 
-  <!-- STEP 3 -->
-  <div class="card step" id="step3">
-    <h2>Professional Details</h2>
-    <div class="form-grid">
-      <input id="name" placeholder="Full Name *">
-      <input id="age" type="number" placeholder="Age *">
-      <input id="phone" placeholder="Phone Number *">
-      <input id="location" placeholder="Preferred Location *">
-      <input id="experience" type="number" placeholder="Experience (Years) *">
-      <input id="currentSalary" type="number" placeholder="Present Salary *">
-      <input id="expectedSalary" type="number" placeholder="Expected Salary *">
-      <textarea id="notes" placeholder="Notes (Optional)"></textarea>
-      <label class="file-box">
-        Upload CV (Optional)
-        <input type="file" id="cv">
-      </label>
-    </div>
-    <button class="next-btn">Continue</button>
-  </div>
+  <!-- SUBJECTS -->
+  <h3>Select Subjects *</h3>
+  <div id="subjects" class="subjects"></div>
 
-  <!-- STEP 4: TERMS -->
-  <div class="card step" id="step4">
-    <h2>Consultancy Charges – For Lecturers</h2>
+  <!-- FORM -->
+  <input id="name" placeholder="Full Name *">
+  <input id="age" type="number" placeholder="Age *">
+  <input id="phone" placeholder="Phone Number (10 digits) *">
+  <input id="location" placeholder="Preferred Location *">
+  <input id="experience" type="number" placeholder="Experience (Years) *">
+  <input id="currentSalary" type="number" placeholder="Present Salary *">
+  <input id="expectedSalary" type="number" placeholder="Expected Salary *">
 
-    <div class="terms-box">
-      <p>• Registration and sharing of openings is completely free.</p>
-      <p>• Consultancy charges apply only after successful joining.</p>
-      <p>• Institutes are not charged any fees.</p>
-      <p>• An onboarding fee of <b>₹499</b> is collected at the time of joining.</p>
-      <p>• Total consultancy fee is <b>50% of first month’s salary</b> (₹499 included).</p>
-      <p>• Remaining amount is collected in <b>2 easy EMIs</b>.</p>
-      <p>• No hidden charges. Proper billing is provided.</p>
-    </div>
+  <textarea id="notes" placeholder="Notes (Optional)"></textarea>
 
-    <label class="checkbox">
-      <input type="checkbox" id="agree"> I agree to the consultancy charges
+  <!-- CV -->
+  <label class="upload">
+    Upload CV (Optional)
+    <input type="file" id="cv">
+  </label>
+
+  <!-- TERMS -->
+  <div class="terms">
+    <h3>Consultancy Charges – For Lecturers</h3>
+    <ul>
+      <li>No charges for registration or sharing openings.</li>
+      <li>Charges apply only after successful joining.</li>
+      <li>Institutes are not charged.</li>
+      <li>₹499 onboarding fee at the time of joining.</li>
+      <li>Total consultancy fee: 50% of first month salary.</li>
+      <li>Remaining amount collected in 2 easy EMIs.</li>
+      <li>No hidden charges. Proper billing provided.</li>
+    </ul>
+    <label>
+      <input type="checkbox" id="agree">
+      I agree to the consultancy charges
     </label>
-
-    <button id="submitBtn" disabled>Submit Registration</button>
   </div>
+
+  <!-- SUBMIT -->
+  <button id="submitBtn" disabled>Submit Registration</button>
 
   <!-- SUCCESS -->
-  <div class="card step" id="success">
-    <img src="logo.png" class="logo">
+  <div id="success" class="success hidden">
     <h2>Registration Successful 🎉</h2>
     <p>Your Lecturer ID</p>
     <h1 id="lecturerId"></h1>
