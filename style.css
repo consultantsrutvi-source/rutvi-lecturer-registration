@@ -1,52 +1,129 @@
 body {
-  font-family: Arial;
-  background: #f4f6f8;
+  font-family: "Segoe UI", sans-serif;
+  background: #eef7f1;
   margin: 0;
-  padding: 0;
 }
 
-.logo {
-  width: 120px;
-  margin-bottom: 15px;
-}
-
-#entryScreen {
+.center {
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: white;
-  text-align: center;
 }
 
-.thought {
+.logo {
+  width: 110px;
+  margin-bottom: 10px;
+}
+
+.tagline {
+  color: #3b7f5d;
   font-style: italic;
-  color: #555;
-  margin-top: 8px;
 }
 
-form, #success {
-  max-width: 420px;
+.hidden { display: none; }
+
+#container {
+  max-width: 520px;
   margin: auto;
-  background: white;
   padding: 20px;
-  border-radius: 8px;
 }
 
-input, select, textarea, button {
-  width: 100%;
-  margin: 8px 0;
-  padding: 10px;
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  display: none;
 }
 
-button {
-  background: #0a4cff;
-  color: white;
-  border: none;
+.card.active { display: block; }
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.select-btn {
+  padding: 18px;
+  border-radius: 10px;
+  border: 2px solid #4caf50;
+  background: white;
+  font-size: 16px;
   cursor: pointer;
 }
 
-.terms {
+.select-btn.active {
+  background: #4caf50;
+  color: white;
+}
+
+.pill-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.pill {
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: 1px solid #4caf50;
+  cursor: pointer;
+}
+
+.pill.active {
+  background: #4caf50;
+  color: white;
+}
+
+.form-grid input, textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+textarea { resize: none; height: 70px; }
+
+.file-box {
+  display: block;
+  border: 2px dashed #4caf50;
+  padding: 12px;
+  text-align: center;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.file-box input { display: none; }
+
+.next-btn, #submitBtn {
+  width: 100%;
+  padding: 14px;
+  background: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  margin-top: 15px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#submitBtn:disabled {
+  background: #9ccc9c;
+  cursor: not-allowed;
+}
+
+.terms-box {
+  background: #f6fbf8;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.checkbox {
+  margin-top: 12px;
   font-size: 14px;
 }
