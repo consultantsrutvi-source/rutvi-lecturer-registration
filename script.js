@@ -1,50 +1,83 @@
 const backendURL = "https://script.google.com/macros/s/AKfycbwSon-dKx8RWIhIvxP328WDdOFirC4Lw6fL99LNF2-4XG5kLIrJdGBHp7nDZ3FmnAIb/exec";
 
 const entry = document.getElementById("entryScreen");
-const form = document.getElementById("lecturerForm");
-const success = document.getElementById("success");
+const container = document.getElementById("container");
+const steps = document.querySelectorAll(".step");
 
-// Entry screen delay
+let level = "";
+let subjects = [];
+
 setTimeout(() => {
   entry.style.display = "none";
-  form.style.display = "block";
-}, 2500);
+  container.classList.remove("hidden");
+  steps[0].classList.add("active");
+}, 2000);
 
-// Subject logic
-const subjectsByLevel = {
-  NEET: ["Physics", "Chemistry", "Zoology", "Botany", "Biology"],
-  JEE: ["Physics", "Chemistry", "Maths"],
-  CET: ["Physics", "Chemistry", "Maths"],
-  BOARDS: ["Physics", "Chemistry", "Maths", "Biology"]
-};
-
-document.getElementById("level").addEventListener("change", function () {
-  const sub = document.getElementById("subjects");
-  sub.innerHTML = "";
-  subjectsByLevel[this.value]?.forEach(s => {
-    const opt = document.createElement("option");
-    opt.value = s;
-    opt.textContent = s;
-    sub.appendChild(opt);
-  });
+// STEP 1
+document.querySelectorAll(".select-btn").forEach(btn => {
+  btn.onclick = () => {
+    document.querySelectorAll(".select-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    level = btn.dataset.level;
+    loadSubjects();
+    nextStep(1);
+  };
 });
 
-// Submit
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
+function loadSubjects() {
+  const map = {
+    NEET: ["Physics", "Chemistry", "Botany", "Zoology", "Biology"],
+    JEE: ["Physics", "Chemistry", "Maths"],
+    CET: ["Physics", "Chemistry", "Maths"],
+    BOARDS: ["Physics", "Chemistry", "Maths", "Biology"]
+  };
+  const box = document.getElementById("subjects");
+  box.innerHTML = "";
+  subjects = [];
+  map[level].forEach(s => {
+    const pill = document.createElement("div");
+    pill.className = "pill";
+    pill.innerText = s;
+    pill.onclick = () => {
+      pill.classList.toggle("active");
+      subjects.includes(s) ? subjects.splice(subjects.indexOf(s),1) : subjects.push(s);
+    };
+    box.appendChild(pill);
+  });
+}
 
-  const phone = document.getElementById("phone").value;
-  if (!/^\d{10}$/.test(phone)) {
-    alert("Phone number must be exactly 10 digits");
+// Continue buttons
+document.querySelectorAll(".next-btn").forEach(btn => {
+  btn.onclick = () => nextStep();
+});
+
+function nextStep(index) {
+  steps.forEach(s => s.classList.remove("active"));
+  steps[index ?? getActive()+1].classList.add("active");
+}
+
+function getActive() {
+  return [...steps].findIndex(s => s.classList.contains("active"));
+}
+
+// Terms checkbox
+document.getElementById("agree").onchange = e => {
+  document.getElementById("submitBtn").disabled = !e.target.checked;
+};
+
+// Submit
+document.getElementById("submitBtn").onclick = async () => {
+  if (!/^\d{10}$/.test(phone.value)) {
+    alert("Phone number must be 10 digits");
     return;
   }
 
-  const data = {
+  const payload = {
     name: name.value,
     age: age.value,
-    phone,
-    level: level.value,
-    subjects: [...subjects.selectedOptions].map(o => o.value).join(", "),
+    phone: phone.value,
+    level,
+    subjects: subjects.join(", "),
     experience: experience.value,
     location: location.value,
     currentSalary: currentSalary.value,
@@ -54,13 +87,13 @@ form.addEventListener("submit", async (e) => {
 
   const res = await fetch(backendURL, {
     method: "POST",
-    body: JSON.stringify(data)
+    body: JSON.stringify(payload)
   });
 
-  const result = await res.json();
-  if (result.status === "success") {
-    form.style.display = "none";
-    success.style.display = "block";
-    document.getElementById("lecturerId").innerText = result.lecturerId;
+  const out = await res.json();
+  if (out.status === "success") {
+    steps.forEach(s => s.classList.remove("active"));
+    document.getElementById("success").classList.add("active");
+    document.getElementById("lecturerId").innerText = out.lecturerId;
   }
-});
+};
