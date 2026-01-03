@@ -1,7 +1,29 @@
 body {
   font-family: Arial;
   background: #f4f6f8;
-  padding: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.logo {
+  width: 120px;
+  margin-bottom: 15px;
+}
+
+#entryScreen {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  text-align: center;
+}
+
+.thought {
+  font-style: italic;
+  color: #555;
+  margin-top: 8px;
 }
 
 form, #success {
@@ -25,7 +47,6 @@ button {
   cursor: pointer;
 }
 
-#loader {
-  text-align: center;
-  margin-top: 80px;
+.terms {
+  font-size: 14px;
 }
