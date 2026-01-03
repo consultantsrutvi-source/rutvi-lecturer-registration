@@ -3,67 +3,90 @@
 <head>
   <meta charset="UTF-8">
   <title>Rutvi Consultants – Lecturer Registration</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <!-- ENTRY SCREEN -->
-<div id="entryScreen">
-  <img src="logo.png.jpg" class="logo">
-  <h2>Welcome to Rutvi Consultants</h2>
-  <p class="thought">
-    “Great teachers create great futures.”
-  </p>
+<div id="entryScreen" class="center">
+  <img src="logo.png" class="logo">
+  <h1>Rutvi Consultants</h1>
+  <p class="tagline">Transparent • Ethical • Academic Recruitment</p>
 </div>
 
-<!-- FORM SCREEN -->
-<form id="lecturerForm" style="display:none;">
+<!-- MAIN CONTAINER -->
+<div id="container" class="hidden">
 
-  <h2>Lecturer Registration</h2>
+  <!-- STEP 1 -->
+  <div class="card step active" id="step1">
+    <h2>Select Level</h2>
+    <div class="card-grid">
+      <button class="select-btn" data-level="NEET">NEET</button>
+      <button class="select-btn" data-level="JEE">JEE</button>
+      <button class="select-btn" data-level="CET">CET</button>
+      <button class="select-btn" data-level="BOARDS">BOARDS</button>
+    </div>
+  </div>
 
-  <label>Level *</label>
-  <select id="level" required>
-    <option value="">Select</option>
-    <option value="NEET">NEET</option>
-    <option value="JEE">JEE</option>
-    <option value="CET">CET</option>
-    <option value="BOARDS">BOARDS</option>
-  </select>
+  <!-- STEP 2 -->
+  <div class="card step" id="step2">
+    <h2>Select Subjects</h2>
+    <div id="subjects" class="pill-grid"></div>
+    <button class="next-btn">Continue</button>
+  </div>
 
-  <label>Subjects *</label>
-  <select id="subjects" multiple required></select>
+  <!-- STEP 3 -->
+  <div class="card step" id="step3">
+    <h2>Professional Details</h2>
+    <div class="form-grid">
+      <input id="name" placeholder="Full Name *">
+      <input id="age" type="number" placeholder="Age *">
+      <input id="phone" placeholder="Phone Number *">
+      <input id="location" placeholder="Preferred Location *">
+      <input id="experience" type="number" placeholder="Experience (Years) *">
+      <input id="currentSalary" type="number" placeholder="Present Salary *">
+      <input id="expectedSalary" type="number" placeholder="Expected Salary *">
+      <textarea id="notes" placeholder="Notes (Optional)"></textarea>
+      <label class="file-box">
+        Upload CV (Optional)
+        <input type="file" id="cv">
+      </label>
+    </div>
+    <button class="next-btn">Continue</button>
+  </div>
 
-  <input type="text" id="name" placeholder="Full Name *" required>
-  <input type="number" id="age" placeholder="Age *" required>
-  <input type="text" id="phone" placeholder="Phone (10 digits) *" required>
-  <input type="text" id="location" placeholder="Preferred Location *" required>
-  <input type="number" id="experience" placeholder="Experience (Years) *" required>
-  <input type="number" id="currentSalary" placeholder="Current Salary *" required>
-  <input type="number" id="expectedSalary" placeholder="Expected Salary *" required>
+  <!-- STEP 4: TERMS -->
+  <div class="card step" id="step4">
+    <h2>Consultancy Charges – For Lecturers</h2>
 
-  <textarea id="notes" placeholder="Notes (Optional)"></textarea>
+    <div class="terms-box">
+      <p>• Registration and sharing of openings is completely free.</p>
+      <p>• Consultancy charges apply only after successful joining.</p>
+      <p>• Institutes are not charged any fees.</p>
+      <p>• An onboarding fee of <b>₹499</b> is collected at the time of joining.</p>
+      <p>• Total consultancy fee is <b>50% of first month’s salary</b> (₹499 included).</p>
+      <p>• Remaining amount is collected in <b>2 easy EMIs</b>.</p>
+      <p>• No hidden charges. Proper billing is provided.</p>
+    </div>
 
-  <label>Upload CV (Optional)</label>
-  <input type="file" id="cv">
+    <label class="checkbox">
+      <input type="checkbox" id="agree"> I agree to the consultancy charges
+    </label>
 
-  <label class="terms">
-    <input type="checkbox" id="terms" required>
-    I agree to the Terms & Conditions
-  </label>
+    <button id="submitBtn" disabled>Submit Registration</button>
+  </div>
 
-  <button type="submit">Submit</button>
-</form>
+  <!-- SUCCESS -->
+  <div class="card step" id="success">
+    <img src="logo.png" class="logo">
+    <h2>Registration Successful 🎉</h2>
+    <p>Your Lecturer ID</p>
+    <h1 id="lecturerId"></h1>
+    <p>Please take a screenshot for future reference.<br>
+    Our team will contact you within <b>12 hours</b>.</p>
+  </div>
 
-<!-- SUCCESS SCREEN -->
-<div id="success" style="display:none;">
-  <img src="logo.png.jpg" class="logo">
-  <h2>Submitted Successfully 🎉</h2>
-  <p>Your Lecturer ID</p>
-  <h1 id="lecturerId"></h1>
-  <p>
-    Please take a screenshot of this ID for future reference.<br>
-    Our team will contact you within <b>12 hours</b>.
-  </p>
 </div>
 
 <script src="script.js"></script>
