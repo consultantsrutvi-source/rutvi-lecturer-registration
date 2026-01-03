@@ -1,129 +1,95 @@
 body {
-  font-family: "Segoe UI", sans-serif;
-  background: #eef7f1;
   margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #eef7f1;
 }
 
-.center {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.container {
+  max-width: 520px;
+  margin: auto;
+  padding: 16px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .logo {
-  width: 110px;
-  margin-bottom: 10px;
+  width: 90px;
 }
 
-.tagline {
-  color: #3b7f5d;
-  font-style: italic;
-}
+h1 { margin: 8px 0; }
+h3 { margin-top: 20px; }
 
-.hidden { display: none; }
-
-#container {
-  max-width: 520px;
-  margin: auto;
-  padding: 20px;
-}
-
-.card {
-  background: white;
-  border-radius: 12px;
-  padding: 25px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-  display: none;
-}
-
-.card.active { display: block; }
-
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
-}
-
-.select-btn {
-  padding: 18px;
-  border-radius: 10px;
-  border: 2px solid #4caf50;
-  background: white;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.select-btn.active {
-  background: #4caf50;
-  color: white;
-}
-
-.pill-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.pill {
-  padding: 8px 14px;
+.level-group button,
+.subjects div {
+  padding: 10px;
+  margin: 6px 4px;
   border-radius: 20px;
   border: 1px solid #4caf50;
+  background: #fff;
   cursor: pointer;
 }
 
-.pill.active {
+.level-group button.active,
+.subjects div.active {
   background: #4caf50;
   color: white;
 }
 
-.form-grid input, textarea {
+.subjects {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+input, textarea {
   width: 100%;
   padding: 12px;
-  margin: 8px 0;
+  margin-top: 10px;
   border-radius: 8px;
   border: 1px solid #ccc;
 }
 
-textarea { resize: none; height: 70px; }
+textarea { height: 70px; }
 
-.file-box {
+.upload {
   display: block;
-  border: 2px dashed #4caf50;
+  margin-top: 12px;
   padding: 12px;
+  border: 2px dashed #4caf50;
   text-align: center;
-  margin-top: 10px;
-  cursor: pointer;
-}
-
-.file-box input { display: none; }
-
-.next-btn, #submitBtn {
-  width: 100%;
-  padding: 14px;
-  background: #4caf50;
-  color: white;
-  border: none;
   border-radius: 8px;
-  margin-top: 15px;
-  font-size: 16px;
-  cursor: pointer;
 }
 
-#submitBtn:disabled {
-  background: #9ccc9c;
-  cursor: not-allowed;
-}
+.upload input { display: none; }
 
-.terms-box {
+.terms {
   background: #f6fbf8;
   padding: 15px;
-  border-radius: 8px;
+  border-radius: 10px;
+  margin-top: 20px;
   font-size: 14px;
 }
 
-.checkbox {
-  margin-top: 12px;
-  font-size: 14px;
+button#submitBtn {
+  width: 100%;
+  margin-top: 20px;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  background: #4caf50;
+  color: white;
+  font-size: 16px;
 }
+
+button:disabled {
+  background: #9ccc9c;
+}
+
+.success {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.hidden { display: none; }
